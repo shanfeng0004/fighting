@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 
 void count_sort(int a[], int b[], int n, int k)
 {
