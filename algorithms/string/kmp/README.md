@@ -9,10 +9,10 @@
 - 整个算法最坏的情况是，当模式串首字符位于i - j的位置时才匹配成功，算法结束。
 - 所以，如果文本串的长度为n£??模式串的长度为m，那么匹配过程的时间复杂¶任狾(n)，算上计算next的O(m)时间，KMP的整体时间复杂度为O(m + n)。
 
----
 ##扩展1：BM算法
 ##扩展2：Sunday算法
 
+---
 
 #实现二
 [更好理解的一个版本](http://cache.baiducontent.com/c?m=9f65cb4a8c8507ed4fece763105392230e54f73260878e482a958448e435061e5a37f4bb51734e59949361251cae495cecf53c78200357eddd97d65e98e6d27e20d17876671df65663a30ed8ca5155c437e350&p=8377845bc58a12a05abd9b7e0e15cc&newp=836a840c85cc43ff57ed977d4e568e231610db2151d1d301298ffe0cc4241a1a1a3aecbf26211b04d0c3776c05a94a5ceefb3075370834f1f689df08d2ecce7e&user=baidu&fm=sc&query=kmp%CB%E3%B7%A8&qid=9fe88a1800062161&p1=2)
