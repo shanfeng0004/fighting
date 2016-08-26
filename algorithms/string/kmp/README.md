@@ -10,7 +10,9 @@
 - 所以，如果文本串的长度为n£??模式串的长度为m，那么匹配过程的时间复杂¶任狾(n)，算上计算next的O(m)时间，KMP的整体时间复杂度为O(m + n)。
 
 ##扩展1：BM算法
+[参考](http://blog.csdn.net/joylnwang/article/details/6785743)
 ##扩展2：Sunday算法
+[参考](http://blog.163.com/yangfan876@126/blog/static/80612456201342205056344/)
 
 ---
 
