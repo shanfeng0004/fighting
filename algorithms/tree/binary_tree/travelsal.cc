@@ -15,7 +15,7 @@ void pre_order(TNode* root)
         return;
     }
 
-    printf("%d,", root);
+    std::cout<<root->val<<",";
     pre_order(root->lchild);
     pre_order(root->rchild);
 }
@@ -27,9 +27,9 @@ void mid_order(TNode* root)
         return;
     }
 
-    pre_order(root->lchild);
-    printf("%d,", root);
-    pre_order(root->rchild);
+    mid_order(root->lchild);
+    std::cout<<root->val<<",";
+    mid_order(root->rchild);
 }
 
 // 3. post order
@@ -39,9 +39,10 @@ void post_order(TNode* root)
         return;
     }
 
-    pre_order(root->lchild);
-    pre_order(root->rchild);
-    printf("%d,", root);
+    post_order(root->lchild);
+    post_order(root->rchild);
+
+    std::cout<<root->val<<",";
 }
 
 /********************************* non-recursive ***************************************/
@@ -68,17 +69,17 @@ void build_tree(TNode* root, int a[], int begin, int end)
         return; 
     }
 
-    TNode* root = new TNode();
+    root = new TNode();
     root->val = a[begin++];
     root->lchild = NULL;
     root->rchild = NULL;
     if (begin == end) {
         return;
     } 
-    int mid = (begin + end)/2
+    int mid = (begin + end)/2;
 
-    build_tree(root->lchild, begin, mid);
-    build_tree(root->rchild, mid+1, end);
+    build_tree(root->lchild, a, begin, mid);
+    build_tree(root->rchild, a, mid+1, end);
 }
 
 int main()
@@ -88,5 +89,10 @@ int main()
 
     TNode* root = NULL; 
     build_tree(root, a, 0, 9);
+    if (root == NULL) {
+        std::cout << "root is NULL" << std::endl;
+    }
+
+    pre_order(root);
 }
 
