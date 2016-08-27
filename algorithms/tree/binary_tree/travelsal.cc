@@ -46,19 +46,47 @@ void post_order(TNode* root)
 
 /********************************* non-recursive ***************************************/
 // 1. pre order
-void pre_order_nonrecursive(TNode* root)
+//void pre_order_nonrecursive(TNode* root)
+//{
+//    if (root == NULL) {
+//        return;
+//    }
+//    stack<TNode*> sk;
+//    sk.push_back(root);
+//
+//    while (!sk.empty()) {
+//        TNode* cur = sk.pop_back();
+//        printf("%d,", cur->);
+//        if (root)
+//    }
+//
+//}
+
+void build_tree(TNode* root, int a[], int begin, int end)
 {
-    if (root == NULL) {
+    if (begin > end) {
+        return; 
+    }
+
+    TNode* root = new TNode();
+    root->val = a[begin++];
+    root->lchild = NULL;
+    root->rchild = NULL;
+    if (begin == end) {
         return;
-    }
-    stack<TNode*> sk;
-    sk.push_back(root);
+    } 
+    int mid = (begin + end)/2
 
-    while (!sk.empty()) {
-        TNode* cur = sk.pop_back();
-        printf("%d,", cur->);
-        if (root)
-    }
+    build_tree(root->lchild, begin, mid);
+    build_tree(root->rchild, mid+1, end);
+}
 
+int main()
+{
+    int size = 10;
+    int a[10] = {3,2,5,7,6,10,43,33,25,16};
+
+    TNode* root = NULL; 
+    build_tree(root, a, 0, 9);
 }
 
