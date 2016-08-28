@@ -63,23 +63,23 @@ void post_order(TNode* root)
 //
 //}
 
-void build_tree(TNode* root, int a[], int begin, int end)
+void build_tree(TNode** root, int a[], int begin, int end)
 {
     if (begin > end) {
         return; 
     }
 
-    root = new TNode();
-    root->val = a[begin++];
-    root->lchild = NULL;
-    root->rchild = NULL;
-    if (begin == end) {
-        return;
-    } 
+    *root = new TNode();
+    (*root)->val = a[begin++];
+    (*root)->lchild = NULL;
+    (*root)->rchild = NULL;
+    //if (begin == end) {
+    //    return;
+    //} 
     int mid = (begin + end)/2;
 
-    build_tree(root->lchild, a, begin, mid);
-    build_tree(root->rchild, a, mid+1, end);
+    build_tree(&((*root)->lchild), a, begin, mid);
+    build_tree(&((*root)->rchild), a, mid+1, end);
 }
 
 int main()
@@ -88,11 +88,16 @@ int main()
     int a[10] = {3,2,5,7,6,10,43,33,25,16};
 
     TNode* root = NULL; 
-    build_tree(root, a, 0, 9);
+    build_tree(&root, a, 0, 9);
     if (root == NULL) {
         std::cout << "root is NULL" << std::endl;
     }
 
     pre_order(root);
+    std::cout << std::endl;
+    mid_order(root);
+    std::cout << std::endl;
+    post_order(root);
+    std::cout << std::endl;
 }
 
