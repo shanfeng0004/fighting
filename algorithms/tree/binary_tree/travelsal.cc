@@ -47,21 +47,70 @@ void post_order(TNode* root)
 
 /********************************* non-recursive ***************************************/
 // 1. pre order
-//void pre_order_nonrecursive(TNode* root)
-//{
-//    if (root == NULL) {
-//        return;
-//    }
-//    stack<TNode*> sk;
-//    sk.push_back(root);
-//
-//    while (!sk.empty()) {
-//        TNode* cur = sk.pop_back();
-//        printf("%d,", cur->);
-//        if (root)
-//    }
-//
-//}
+void pre_order_nonrecursive(TNode* root)
+{
+    std::stack<TNode*> st;    
+    TNode* cur = root; 
+    while (cur != NULL || !st.empty()) {
+        while (cur != NULL) {
+            std::cout << cur->val << ",";
+            st.push(cur);
+            cur = cur->lchild;
+        }
+
+        if (!st.empty()) {
+            cur = st.top();
+            st.pop();
+            cur = cur->rchild;
+        }
+    }
+}
+
+// 2. mid order
+void mid_order_nonrecursive(TNode* root)
+{
+    std::stack<TNode*> st;    
+    TNode* cur = root; 
+    while (cur != NULL || !st.empty()) {
+        while (cur != NULL) {
+            st.push(cur);
+            cur = cur->lchild;
+        }
+
+        if (!st.empty()) {
+            cur = st.top();
+            std::cout << cur->val << ",";
+            st.pop();
+            cur = cur->rchild;
+        }
+    }
+}
+
+// 3. post order
+void post_order_nonrecursive(TNode* root)
+{
+    std::stack<TNode*> st;
+    TNode *cur;                      //当前结点 
+    TNode *pre = NULL;                 //前一次访问的结点 
+    st.push(root);
+    while(!st.empty())
+    {
+        cur = st.top();
+        if ((cur->lchild == NULL && cur->rchild == NULL) 
+         || (pre != NULL && (pre == cur->lchild || pre == cur->rchild))) {
+            std::cout << cur->val << ",";
+            st.pop();
+            pre = cur; 
+        } else {
+            if (cur->rchild != NULL) {
+                st.push(cur->rchild);
+            }
+            if (cur->lchild != NULL) {
+                st.push(cur->lchild);
+            }
+        }
+    }    
+}
 
 void build_tree(TNode** root, int a[], int begin, int end)
 {
@@ -73,9 +122,7 @@ void build_tree(TNode** root, int a[], int begin, int end)
     (*root)->val = a[begin++];
     (*root)->lchild = NULL;
     (*root)->rchild = NULL;
-    //if (begin == end) {
-    //    return;
-    //} 
+
     int mid = (begin + end)/2;
 
     build_tree(&((*root)->lchild), a, begin, mid);
@@ -93,11 +140,40 @@ int main()
         std::cout << "root is NULL" << std::endl;
     }
 
+    std::cout << "pre order recursive:" << std::endl;
     pre_order(root);
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
+
+    std::cout << "pre order non-recursive:" << std::endl;
+    pre_order_nonrecursive(root);
+    std::cout << std::endl << std::endl;
+
+    std::cout << "mid order:" << std::endl;
     mid_order(root);
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
+
+    std::cout << "mid order non-recursive:" << std::endl;
+    mid_order_nonrecursive(root);
+    std::cout << std::endl << std::endl;
+
+    std::cout << "post order:" << std::endl;
     post_order(root);
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
+
+    std::cout << "post order non-recursive:" << std::endl;
+    post_order_nonrecursive(root);
+    std::cout << std::endl << std::endl;
+
+    return 0;
 }
 
+/********************************* tree graph ***********************************/
+/*
+*                                3
+*                               / \
+*                             2    43
+*                            / \   /  \
+*                           5  6  33  16
+*                          /   /  /  
+*                         7   10  25
+*/
