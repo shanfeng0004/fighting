@@ -13,3 +13,20 @@ Dijkstra(迪杰斯特拉)算法是典型的单源最短路径算法，用于计�
     * 以k为新考虑的中间点，修改U中各顶点的距离；若从源点v到顶点u的距离（经过顶点k）比原来距离（不经过顶点k）短，则修改顶点u的距离值，修改后的距离值的顶点k的距离加上边上的权。
     * 重复步骤b和c直到所有顶点都包含在S中。
 
+# floyd 算法[原文](http://blog.csdn.net/zhongkeli/article/details/8832946)
+
+**这个算法主要要弄懂三个循环的顺序关系。**
+
+弗洛伊德（Floyd）算法过程：
+- 用D[v][w]记录每一对顶点的最短距离。
+- 依次扫描每一个点，并以其为基点再遍历所有每一对顶点D[][]的值，看看是否可用过该基点让这对顶点间的距离更小。
+
+参考
+<http://chenchuangfeng.iteye.com/blog/1816976>
+<http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html>
+<http://blog.csdn.net/start0609/article/details/7779042>
+<http://blog.csdn.net/niushuai666/article/details/6772706>
+<http://nopainnogain.iteye.com/blog/1047818>
+<http://blog.csdn.net/earbao/article/details/8114861>
+<http://blog.csdn.net/roofalison/article/details/5651806>
+
