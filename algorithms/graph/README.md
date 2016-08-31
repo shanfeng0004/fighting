@@ -22,11 +22,18 @@ Dijkstra(迪杰斯特拉)算法是典型的单源最短路径算法，用于计�
 - 依次扫描每一个点，并以其为基点再遍历所有每一对顶点D[][]的值，看看是否可用过该基点让这对顶点间的距离更小。
 
 参考
+
 <http://chenchuangfeng.iteye.com/blog/1816976>
+
 <http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html>
+
 <http://blog.csdn.net/start0609/article/details/7779042>
+
 <http://blog.csdn.net/niushuai666/article/details/6772706>
+
 <http://nopainnogain.iteye.com/blog/1047818>
+
 <http://blog.csdn.net/earbao/article/details/8114861>
+
 <http://blog.csdn.net/roofalison/article/details/5651806>
 
